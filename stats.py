@@ -11,3 +11,13 @@ def character_count(file_contents):
         else:
             letters[stored_letters] = 1
     return letters
+def sort_on(items):
+    return items["num"]
+    
+def sort_characters(character_count):
+    characters = []
+    for char_name, num_count in character_count.items():
+        char_dict = {"char": char_name, "num": num_count}
+        characters.append(char_dict)
+    characters.sort(reverse=True, key=sort_on)
+    return characters

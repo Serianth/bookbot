@@ -5,11 +5,22 @@ def get_book_text(book):
     return file_contents
 from stats import word_count
 from stats import character_count
+from stats import sort_characters
 #main function - currently uses the above two functions in order to print out how many words are in the book.
 def main():
     book_contents = get_book_text("books/frankenstein.txt")
     num_words = word_count(book_contents)
     num_letters = character_count(book_contents)
-    print (f"{num_words} words found in the document")
-    print (num_letters)
+    character_list = sort_characters(num_letters)
+    print (f"============ BOOKBOT ============")
+    print (f"Analyzing book found at books/frankenstein.txt...")
+    print (f"----------- Word Count ----------")
+    print (f"Found {num_words} total words")
+    print (f"--------- Character Count -------")
+    for char in character_list:
+        char_string = char["char"]
+        char_num = char["num"]
+        if char_string.isalpha():
+            print (f"{char_string}: {char_num}")
+    print (f"============= END ===============")
 main()
